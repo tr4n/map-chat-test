@@ -38,13 +38,14 @@
         android:hint="Emma Waston"
         android:inputType="textPersonName"
         android:paddingHorizontal="4dp"
+        android:text="Emma Waston"
         android:textColor="#000"
         android:textSize="14sp" />
 
     <TextView
-        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Email:"
         android:textColor="#fff"
         android:textSize="16sp"
@@ -59,13 +60,14 @@
         android:hint="emmawaston@tr4n.com"
         android:inputType="textEmailAddress"
         android:paddingHorizontal="4dp"
+        android:text="emmawaston@tr4n.com"
         android:textColor="#000"
         android:textSize="14sp" />
 
     <TextView
-        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Password:"
         android:textColor="#fff"
         android:textSize="16sp"
@@ -81,13 +83,14 @@
         android:hint="minimum 6 characters length"
         android:inputType="textPassword"
         android:paddingHorizontal="4dp"
+        android:text="123456"
         android:textColor="#000"
         android:textSize="14sp" />
 
     <TextView
-        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Re-enter password"
         android:textColor="#fff"
         android:textSize="16sp"
@@ -102,15 +105,16 @@
         android:hint="re-type password"
         android:inputType="textPassword"
         android:paddingHorizontal="4dp"
+        android:text="123456"
         android:textColor="#000"
         android:textSize="14sp" />
 
 
     <LinearLayout
-        android:layout_marginTop="8dp"
         android:id="@+id/ll_browse_avatar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -130,37 +134,53 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/iv_avatar"
+    <android.support.v7.widget.CardView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/ic_account_box_white_24dp" />
+        android:layout_centerHorizontal="true"
+        android:elevation="2dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="1.9"
+        app:cardCornerRadius="75dp" >
 
-    <RelativeLayout
-        android:layout_marginTop="8dp"
+    <ImageView
+        android:background="@color/colorPrimary"
+        android:id="@+id/iv_avatar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="24dp">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/conner_button"
-            android:text="cancel"
-            android:textColor="#fff" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/conner_button"
-            android:text="Register"
-            android:textColor="#fff" />
-
-    </RelativeLayout>
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_account_circle_black_24dp" />
+</android.support.v7.widget.CardView>
 
 
-</LinearLayout>
+<RelativeLayout
+android:layout_marginTop="8dp"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:gravity="center_vertical"
+android:orientation="horizontal"
+android:paddingHorizontal="24dp">
+
+<Button
+    android:id="@+id/bt_cancel"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"
+    android:layout_alignParentStart="true"
+    android:background="@drawable/conner_button"
+    android:text="cancel"
+    android:textColor="#fff" />
+
+<Button
+    android:id="@+id/bt_register"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"
+    android:layout_alignParentEnd="true"
+    android:background="@drawable/conner_button"
+    android:text="Register"
+    android:textColor="#fff" />
+
+</RelativeLayout>
+
+
+    </LinearLayout>
