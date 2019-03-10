@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingHorizontal="24dp"
     tools:context=".RegisterActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:layout_marginTop="150dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -110,77 +110,77 @@
         android:textSize="14sp" />
 
 
-    <LinearLayout
-        android:id="@+id/ll_browse_avatar"
+    <!--<LinearLayout-->
+    <!--android:id="@+id/ll_browse_avatar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Upload avatar:"-->
+    <!--android:textColor="#fff"-->
+    <!--android:textSize="16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:padding="8dp"-->
+    <!--android:src="@drawable/ic_pageview_white_24dp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<android.support.v7.widget.CardView-->
+    <!--android:layout_width="150dp"-->
+    <!--android:layout_height="150dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:elevation="2dp"-->
+    <!--android:innerRadius="0dp"-->
+    <!--android:shape="ring"-->
+    <!--android:thicknessRatio="1.9"-->
+    <!--app:cardCornerRadius="75dp" >-->
+
+    <!--<ImageView-->
+    <!--android:background="@color/colorPrimary"-->
+    <!--android:id="@+id/iv_avatar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:scaleType="centerCrop"-->
+    <!--android:src="@drawable/ic_account_circle_black_24dp" />-->
+    <!--</android.support.v7.widget.CardView>-->
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="24dp">
 
-        <TextView
+        <Button
+            android:id="@+id/bt_cancel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Upload avatar:"
-            android:textColor="#fff"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/conner_button"
+            android:text="cancel"
+            android:textColor="#fff" />
 
-        <ImageView
+        <Button
+            android:id="@+id/bt_register"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:src="@drawable/ic_pageview_white_24dp" />
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/conner_button"
+            android:text="Register"
+            android:textColor="#fff" />
 
-    </LinearLayout>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:elevation="2dp"
-        android:innerRadius="0dp"
-        android:shape="ring"
-        android:thicknessRatio="1.9"
-        app:cardCornerRadius="75dp" >
-
-    <ImageView
-        android:background="@color/colorPrimary"
-        android:id="@+id/iv_avatar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_account_circle_black_24dp" />
-</android.support.v7.widget.CardView>
+    </RelativeLayout>
 
 
-<RelativeLayout
-android:layout_marginTop="8dp"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:gravity="center_vertical"
-android:orientation="horizontal"
-android:paddingHorizontal="24dp">
-
-<Button
-    android:id="@+id/bt_cancel"
-    android:layout_width="wrap_content"
-    android:layout_height="40dp"
-    android:layout_alignParentStart="true"
-    android:background="@drawable/conner_button"
-    android:text="cancel"
-    android:textColor="#fff" />
-
-<Button
-    android:id="@+id/bt_register"
-    android:layout_width="wrap_content"
-    android:layout_height="40dp"
-    android:layout_alignParentEnd="true"
-    android:background="@drawable/conner_button"
-    android:text="Register"
-    android:textColor="#fff" />
-
-</RelativeLayout>
-
-
-    </LinearLayout>
+</LinearLayout>

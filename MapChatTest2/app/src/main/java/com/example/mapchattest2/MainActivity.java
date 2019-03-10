@@ -45,6 +45,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.internal.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,11 +78,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         getSupportActionBar().hide();
-      //  setupPermission();
+        //  setupPermission();
         FirebaseApp.initializeApp(this);
         initialization();
         setupUI();
-        //  setupPasswordAuthentication();
         initFacebookLogin();
         initGoogleSignIn();
 
@@ -91,12 +91,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        if (currentUser != null) {
-            signOut();
-
-        }
-        updateUI(null);
+        signOut();
     }
 
     @Override
@@ -158,15 +153,13 @@ public class MainActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_forgot_password:
+                startActivity(new Intent(MainActivity.this, ForgotPasswordActivity.class));
                 break;
             case R.id.tv_register:
-                startActivity(new Intent(
-                        MainActivity.this,
-                        RegisterActivity.class
-                ));
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
                 break;
             case R.id.bt_facebook_login:
-                signOut();
+                //   signOut();
                 break;
             case R.id.bt_google_sign_in:
                 signOut();
@@ -174,6 +167,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.bt_sign_email_password:
                 signOut();
+                String notification = !AuthenticationUtils.isValidEmail(etEmail.getText()) ? "Invalid email"
+                        : !AuthenticationUtils.isValidPassword(etPassword.getText().toString()) ? "Password is mininum 6 characters length"
+                        : "";
+                if (notification.length() > 0) {
+                    Toast.makeText(MainActivity.this, notification, Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                setupPasswordAuthentication(etEmail.getText().toString(), etPassword.getText().toString());
                 break;
         }
     }
@@ -189,14 +190,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void signOut() {
-        firebaseAuth.signOut();
-        googleSignInClient.signOut();
         LoginManager.getInstance().logOut();
+        googleSignInClient.signOut();
+        firebaseAuth.signOut();
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        int accountClass = AuthenticationUtils.classifyAccount(user);
+//        switch (accountClass) {
+//            case AuthenticationUtils.FACEBOOK_ACCOUNT:
+//                LoginManager.getInstance().logOut();
+//                break;
+//            case AuthenticationUtils.GOOGLE_ACCOUNT:
+//                googleSignInClient.signOut();
+//                break;
+//            default:
+//                firebaseAuth.signOut();
+//
+//        }
+//
+
+
     }
 
     private void updateUI(FirebaseUser firebaseUser) {
         if (firebaseUser == null) {
-            Toast.makeText(MainActivity.this, "fail", Toast.LENGTH_SHORT).show();
+            //   Toast.makeText(MainActivity.this, "fail", Toast.LENGTH_SHORT).show();
+            signOut();
 
         } else {
             String name = firebaseUser.getDisplayName();
@@ -214,16 +232,22 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
-                            updateUI(user);
+                            if (!user.isEmailVerified()) {
+                                Log.d(TAG, "onComplete: " + "account is not verified");
+                                Toast.makeText(MainActivity.this, "This account still not verified", Toast.LENGTH_SHORT).show();
+                                updateUI(null);
+                            } else {
+                                updateUI(user);
+                            }
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                            Toast.makeText(MainActivity.this, task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
 
-                        // ...
                     }
                 });
     }
@@ -268,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                            Toast.makeText(MainActivity.this, task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
@@ -329,8 +353,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
 
 
 }
