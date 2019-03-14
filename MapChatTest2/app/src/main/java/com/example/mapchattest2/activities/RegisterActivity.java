@@ -1,10 +1,13 @@
 package com.example.mapchattest2.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +25,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -77,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
 //
 //                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
 //                    // Log.d(TAG, String.valueOf(bitmap));;
-//                    ivAvatar.setImageBitmap(bitmap);
+//               //     ivAvatar.setImageBitmap(bitmap);
 //                    avatarUri = uri;
 //                }
 //
