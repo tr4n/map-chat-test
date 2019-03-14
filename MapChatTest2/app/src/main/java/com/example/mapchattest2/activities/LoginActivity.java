@@ -1,4 +1,4 @@
-package com.example.mapchattest2;
+package com.example.mapchattest2.activities;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -19,6 +19,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mapchattest2.R;
+import com.example.mapchattest2.utils.AuthenticationUtils;
+import com.example.mapchattest2.values.FinalValue;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -45,11 +48,10 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.internal.Utils;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "LoginActivity";
     private static final int RC_SIGN_IN = 100;
     private static final int REQUEST_PERMISSION = 97;
     @BindView(R.id.et_email)
@@ -75,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         getSupportActionBar().hide();
         //  setupPermission();
@@ -132,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 ActivityCompat.requestPermissions(
-                                        MainActivity.this,
+                                        LoginActivity.this,
                                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                                         REQUEST_PERMISSION
                                 );
@@ -141,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                MainActivity.this.finish();
+                                LoginActivity.this.finish();
                             }
                         })
                         .show();
@@ -153,10 +155,10 @@ public class MainActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_forgot_password:
-                startActivity(new Intent(MainActivity.this, ForgotPasswordActivity.class));
+                startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
                 break;
             case R.id.tv_register:
-                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 break;
             case R.id.bt_facebook_login:
                 //   signOut();
@@ -171,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                         : !AuthenticationUtils.isValidPassword(etPassword.getText().toString()) ? "Password is mininum 6 characters length"
                         : "";
                 if (notification.length() > 0) {
-                    Toast.makeText(MainActivity.this, notification, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, notification, Toast.LENGTH_SHORT).show();
                     break;
                 }
                 setupPasswordAuthentication(etEmail.getText().toString(), etPassword.getText().toString());
@@ -213,12 +215,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser firebaseUser) {
         if (firebaseUser == null) {
-            //   Toast.makeText(MainActivity.this, "fail", Toast.LENGTH_SHORT).show();
+            //   Toast.makeText(LoginActivity.this, "fail", Toast.LENGTH_SHORT).show();
             signOut();
 
         } else {
             String name = firebaseUser.getDisplayName();
-            Toast.makeText(MainActivity.this, name, Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "welcome, "+ name, Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
         }
 
     }
@@ -234,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             if (!user.isEmailVerified()) {
                                 Log.d(TAG, "onComplete: " + "account is not verified");
-                                Toast.makeText(MainActivity.this, "This account still not verified", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "This account still not verified", Toast.LENGTH_SHORT).show();
                                 updateUI(null);
                             } else {
                                 updateUI(user);
@@ -243,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, task.getException().getMessage(),
+                            Toast.makeText(LoginActivity.this, task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
@@ -292,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(MainActivity.this, task.getException().getMessage(),
+                            Toast.makeText(LoginActivity.this, task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
@@ -353,6 +356,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 
 
 }

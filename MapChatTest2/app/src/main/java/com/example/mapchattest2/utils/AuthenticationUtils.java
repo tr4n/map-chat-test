@@ -1,4 +1,4 @@
-package com.example.mapchattest2;
+package com.example.mapchattest2.utils;
 
 import android.content.ContentResolver;
 import android.content.Context;

@@ -1,117 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-   android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingHorizontal="24dp"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
-    <TextView
-        android:layout_marginTop="150dp"
-        android:id="@+id/textView"
+    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+        android:id="@+id/ah_bottom_navigation"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="MAP CHAT"
-        android:textAlignment="center"
-        android:textColor="#fff"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <com.github.florent37.materialtextfield.MaterialTextField
-        android:id="@+id/mtf_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:mtf_image="@drawable/ic_email_black_24dp"
-        app:mtf_labelColor="#fff">
-
-        <EditText
-            android:id="@+id/et_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:textColor="#333"
-            android:textSize="14sp" />
-    </com.github.florent37.materialtextfield.MaterialTextField>
-
-    <com.github.florent37.materialtextfield.MaterialTextField
-        android:id="@+id/mtf_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:mtf_image="@drawable/ic_lock_black_24dp"
-        app:mtf_labelColor="#fff">
-
-        <EditText
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:id="@+id/et_password"
-            android:inputType="textPassword"
-            android:textColor="#333"
-            android:textSize="14sp" />
-    </com.github.florent37.materialtextfield.MaterialTextField>
-
-    <Button
-        android:id="@+id/bt_sign_email_password"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/conner_button"
-        android:elevation="2dp"
-        android:text="Sign In"
-        android:textAllCaps="true"
-        android:textColor="#fff"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/tv_forgot_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:paddingVertical="8dp"
-        android:text="Forgot password?"
-        android:textAlignment="textEnd"
-        android:textColor="#fff" />
-
-    <TextView
-        android:id="@+id/tv_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:paddingVertical="8dp"
-        android:text="Register"
-        android:textAlignment="textEnd"
-        android:textColor="#fff" />
-
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/bt_facebook_login"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="24dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="or"
-        android:textAlignment="center"
-        android:textColor="#fff" />
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/bt_google_sign_in"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
 
-</LinearLayout>
+    </com.aurelhubert.ahbottomnavigation.AHBottomNavigation>
 
-
+    <com.example.mapchattest2.viewpagers.NonSwipeableViewPager
+        android:id="@+id/non_swipeable_view_pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/ah_bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

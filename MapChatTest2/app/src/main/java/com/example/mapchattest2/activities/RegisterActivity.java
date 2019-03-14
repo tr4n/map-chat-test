@@ -1,4 +1,4 @@
-package com.example.mapchattest2;
+package com.example.mapchattest2.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mapchattest2.R;
+import com.example.mapchattest2.utils.AuthenticationUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
