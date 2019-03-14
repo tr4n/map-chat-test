@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.mapchattest2.R;
 
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -65,7 +66,9 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+
+        View view =  inflater.inflate(R.layout.fragment_profile, container, false);;
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -80,6 +83,9 @@ public class ProfileFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
+
+
+
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

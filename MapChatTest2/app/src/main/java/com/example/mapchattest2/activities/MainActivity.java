@@ -6,13 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 import com.example.mapchattest2.R;
 import com.example.mapchattest2.fragments.GroupFragment;
 import com.example.mapchattest2.fragments.MessageFragment;
 import com.example.mapchattest2.fragments.MusicFragment;
 import com.example.mapchattest2.fragments.ProfileFragment;
 import com.example.mapchattest2.viewpagers.FragmentViewPagerAdapter;
-import com.example.mapchattest2.viewpagers.NonSwipeableViewPager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity implements MessageFragment.O
 
     @BindView(R.id.ah_bottom_navigation)
     AHBottomNavigation ahBottomNavigation;
-    @BindView(R.id.non_swipeable_view_pager)
-    NonSwipeableViewPager nonSwipeableViewPager;
+    @BindView(R.id.ah_view_pager)
+    AHBottomNavigationViewPager ahViewPager;
 
 
     @Override
@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity implements MessageFragment.O
 
     private void initViewPager() {
         FragmentViewPagerAdapter fragmentViewPagerAdapter = new FragmentViewPagerAdapter(getSupportFragmentManager());
-        nonSwipeableViewPager.setAdapter(fragmentViewPagerAdapter);
+ //       ahViewPager = new AHBottomNavigationViewPager(this, null);
+        ahViewPager.setAdapter(fragmentViewPagerAdapter);
     }
 
     private void initAHBottomNavigation() {
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements MessageFragment.O
         ahBottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
-                nonSwipeableViewPager.setCurrentItem(position);
+                ahViewPager.setCurrentItem(position);
                 return true;
             }
         });
