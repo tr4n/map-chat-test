@@ -50,7 +50,6 @@
             android:hint="Emma Waston"
             android:inputType="textPersonName"
             android:paddingHorizontal="4dp"
-            android:text="Emma Waston"
             android:textColor="#000"
             android:textSize="14sp" />
 
@@ -72,7 +71,6 @@
             android:hint="emmawaston@tr4n.com"
             android:inputType="textEmailAddress"
             android:paddingHorizontal="4dp"
-            android:text="emmawaston@tr4n.com"
             android:textColor="#000"
             android:textSize="14sp" />
 
@@ -95,7 +93,6 @@
             android:hint="minimum 6 characters length"
             android:inputType="textPassword"
             android:paddingHorizontal="4dp"
-            android:text="123456"
             android:textColor="#000"
             android:textSize="14sp" />
 
@@ -117,7 +114,6 @@
             android:hint="re-type password"
             android:inputType="textPassword"
             android:paddingHorizontal="4dp"
-            android:text="123456"
             android:textColor="#000"
             android:textSize="14sp" />
 
